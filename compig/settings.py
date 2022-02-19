@@ -41,7 +41,8 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'django_filters',
-    # 'storages',
+    'storages',
+    'whitenoise'
 ]
 # Application definition
 DJANGO_APPS = [
