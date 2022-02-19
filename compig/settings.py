@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
-
+from dj_database_url import parse as db_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +42,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'django_filters',
     'storages',
+    'whitenoise.runserver_nostatic'
 ]
 # Application definition
 DJANGO_APPS = [
@@ -97,8 +98,7 @@ WSGI_APPLICATION = 'compig.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
+default_db_url = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'compig',
         'USER': 'postgres',
@@ -106,7 +106,10 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
-}
+
+DATABASES = { 'default':  config('DATABASE_URL', default=default_db_url, cast=db_url), }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
