@@ -1,0 +1,68 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Empresas:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Empresa</th>
+					<th>CNPJ</th>
+				</tr>
+
+				{% for  company in companies %}
+					<tr>
+						<td><a href="{% url 'company' company.id %}"> View</a></td>
+						<td>{{company.name}}</td>
+						<td>{{company.cnpj}}</td>
+					</tr>
+
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm"  >
+				<tr>
+					<th>Carregamento</th>
+					<th>Date</th>
+					<th>Status</th>
+					<th>Quantidade</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+				{% for  load in loadings %}
+					<tr>
+						<td>{{load}}</td>
+						<td>{{load.publication}}</td>
+						<td>{{load.status}}</td>
+						<td>{{load.quantity}}</td>
+						<td><a href="{% url 'update_loading' load.id %}" class="btn btn-sm btn-info" >Update</a></td>
+						<td><a href="{% url 'delete_loading' load.id %}" class="btn btn-sm btn-danger">Remove</a></td>
+					</tr>
+
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

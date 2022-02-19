@@ -1,0 +1,32 @@
+{%  extends 'accounts/main.html' %}
+{% block content %}
+{%  include 'accounts/status.html' %}
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Carregamento</th>
+					<th>Producer</th>
+					<th>Status</th>
+					<th>Quantidade</th>
+
+				</tr>
+
+				{% for load in loadings %}
+
+				<tr>
+					<td>{{load}}</td>
+					<td>{{load.truck.producer}}</td>
+					<td>{{load.status}}</td>
+					<td>{{load.quantity}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

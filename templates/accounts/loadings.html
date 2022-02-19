@@ -1,0 +1,39 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Carregamentos</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Carregamento</th>
+							<th>Produtor</th>
+							<th>Caminhão</th>
+							<th>Quantidade</th>
+							<th>GTA</th>
+						</tr>
+						{% for load in loadings %}
+							<tr>
+								<td>{{load}}</td>
+
+								<td>{{load.truck.producer}}</td>
+								<td>{{load.truck}}</td>
+								<td>{{load.quantity}}</td>
+								<td>{{load.gta}}</td>
+							</tr>
+
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}
