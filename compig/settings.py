@@ -103,7 +103,7 @@ DATABASES = {
         'NAME': 'compig',
         'USER': 'postgres',
         'PASSWORD': config('DATABASE_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': config('DATABASE_URL'),
         'PORT': '5432',
     }
 }
