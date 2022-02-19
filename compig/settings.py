@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-1^f8%ts-y#gc&9#i#ca@4anulw$_5%=e-+cuuw!^+64b**h_36
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'compig-test.herokuapp.com'
+    'compig-test.herokuapp.com',
+    'localhost'
 ]
 
 DJANGO_APPS = [
